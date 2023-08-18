@@ -1,6 +1,6 @@
-import { QuizForm } from './QuizForm';
-import { QuizList } from './QuizList';
-import { SearchBar } from './SearchBar';
+import { QuizForm } from './QuizForm/QuizForm';
+import { QuizList } from './QuizList/QuizList';
+import { SearchBar } from './SearchBar/SearchBar';
 import quizItems from '../quiz-items.json';
 
 export const App = () => {
