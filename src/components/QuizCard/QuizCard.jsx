@@ -1,4 +1,5 @@
-import { MetaWrapper, Topic, Wrapper, Text } from './QuizCard.styled';
+import { MetaWrapper, Topic, Wrapper, Text, Button } from './QuizCard.styled';
+import { BsFillFileXFill } from 'react-icons/bs';
 
 export const QuizCard = ({ quiz: { topic, level, time, questions } }) => {
   return (
@@ -16,6 +17,9 @@ export const QuizCard = ({ quiz: { topic, level, time, questions } }) => {
           <b>Questions:</b> {questions}
         </Text>
       </MetaWrapper>
+      <Button>
+        <BsFillFileXFill size={40} />
+      </Button>
     </Wrapper>
   );
 };
