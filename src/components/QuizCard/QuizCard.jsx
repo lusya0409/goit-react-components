@@ -1,7 +1,10 @@
 import { MetaWrapper, Topic, Wrapper, Text, Button } from './QuizCard.styled';
 import { BsFillFileXFill } from 'react-icons/bs';
 
-export const QuizCard = ({ quiz: { topic, level, time, questions } }) => {
+export const QuizCard = ({
+  quiz: { id, topic, level, time, questions },
+  onDelete,
+}) => {
   return (
     <Wrapper level={level}>
       <Topic>{topic}</Topic>
@@ -17,7 +20,7 @@ export const QuizCard = ({ quiz: { topic, level, time, questions } }) => {
           <b>Questions:</b> {questions}
         </Text>
       </MetaWrapper>
-      <Button>
+      <Button onClick={() => onDelete(id)}>
         <BsFillFileXFill size={40} />
       </Button>
     </Wrapper>

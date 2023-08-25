@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const getBorderColor = props => {
-  console.log(props);
+  // console.log(props);
   switch (props.level) {
     case 'beginner':
       return props.theme.colors.green;
