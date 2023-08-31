@@ -35,6 +35,26 @@ export class App extends Component {
       level: 'all',
     },
   };
+  componentDidMount() {
+    const savedFilters = localStorage.getItem('quiz-filters');
+    if (savedFilters !== null) {
+      // const filters = JSON.parse(savedFilters);
+      // this.setState({
+      //   filters,
+      // });
+      //тоже самое
+      this.setState({
+        filters: JSON.parse(savedFilters),
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(`prevState`, prevState);
+    console.log(`this.state`, this.state);
+    if (prevState.filters !== this.state.filters)
+      localStorage.setItem('quiz-filters', JSON.stringify(this.state.filters));
+  }
   addQuiz = newQuiz => {
     this.setState(prevState => ({
       quizItems: [
@@ -99,6 +119,14 @@ export class App extends Component {
     });
   };
 
+  resetFilters = () => {
+    this.setState({
+      filters: {
+        topic: '',
+        level: 'all',
+      },
+    });
+  };
   render() {
     const { filters } = this.state;
     //вычисляемое свойство
@@ -114,6 +142,7 @@ export class App extends Component {
           topic={filters.topic}
           onChangeLevel={this.changeLevelFilter}
           onChangeTopic={this.changeTopicFilter}
+          onReset={this.resetFilters}
         />
         <QuizList items={visibleItems} onDelete={this.deleteQuiz} />
         <Counter />
