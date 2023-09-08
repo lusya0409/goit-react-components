@@ -1,10 +1,4 @@
-export const SearchBar = ({
-  level,
-  topic,
-  onChangeLevel,
-  onChangeTopic,
-  onReset,
-}) => {
+export const SearchBar = ({ level, topic, onChange, onReset }) => {
   return (
     <div>
       <input
@@ -12,16 +6,13 @@ export const SearchBar = ({
         placeholder="Topic filter"
         value={topic}
         onChange={evt => {
-          console.dir(evt.target.value);
-
-          onChangeTopic(evt.target.value);
+          onChange(evt.target.value, 'topic');
         }}
       />
       <select
         value={level}
         onChange={evt => {
-          console.dir(evt.target.value);
-          onChangeLevel(evt.target.value);
+          onChange(evt.target.value, 'level');
         }}
       >
         <option value="all">All</option>
