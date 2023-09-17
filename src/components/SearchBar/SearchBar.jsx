@@ -1,28 +1,17 @@
-export const SearchBar = ({ level, topic, onChange, onReset }) => {
+import { TopicFilter } from './TopicFilter';
+import { LevelFilter } from './LevelFilter';
+import { useQueryParams } from 'hooks/useQueryParams';
+
+export const SearchBar = () => {
+  const { resetFilters } = useQueryParams();
+
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Topic filter"
-        value={topic}
-        onChange={evt => {
-          onChange(evt.target.value, 'topic');
-        }}
-      />
-      <select
-        value={level}
-        onChange={evt => {
-          onChange(evt.target.value, 'level');
-        }}
-      >
-        <option value="all">All</option>
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-      </select>
+      <TopicFilter />
+      <LevelFilter />
       {/* пока лоадинг кнопку прятать, изначально тоже прятать, пока у нас пустой
       массив */}
-      <button onClick={onReset}>Reset filters</button>
+      <button onClick={resetFilters}>Reset filters</button>
     </div>
   );
 };
